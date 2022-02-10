@@ -7,13 +7,13 @@ ruleset temperature_store {
   }
 
   global {
-    temperatures = function(x) {
+    temperatures = function() {
       ent:temperatures
     };
-    threshold_violations = function(x) {
+    threshold_violations = function() {
       ent:threshold_violations
     };
-    inrange_temperatures = function(x) {
+    inrange_temperatures = function() {
       ent:temperatures.filter(
         function(temp) {
           ent:threshold_violations.none(
