@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 
-import { timestampToTime } from '../util/timestampTransformation';
+import { timestampToDate, timestampToTime } from '../util/timestampTransformation';
 
 import config from '../config';
 
@@ -30,8 +30,8 @@ const CurrentTemp = () => {
     <div>
       {temp &&
         <div>
-          <p>{temp.temp}&#176;F</p>
-          <p>Last updated {timestampToTime(temp.time)}</p>
+          <p className='current-temp'>{temp.temp}&#176;F</p>
+          <p className='last-updated'>Last updated {timestampToDate(temp.time)} {timestampToTime(temp.time)}</p>
         </div>
       }  
     </div>

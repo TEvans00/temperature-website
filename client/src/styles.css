@@ -1,3 +1,55 @@
-.violation {
+.App {
+  padding: 50px;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+p {
+  margin: 0;
+}
+
+.current-temp {
+  text-align: center;
+  font-size: 40px;
+}
+
+.last-updated {
+  text-align: right;
+  color: grey;
+  padding-right: 10px;
+}
+
+.temp-log-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  align-items: center;
+}
+
+.temperature-listing {
+  border: 1px solid black;
+  margin: 5px auto;
+  padding: 5px;
+  width: 200px;
+}
+
+.temp {
+  font-size: 20px;
+  text-align: center;
+}
+
+.time {
+  color: grey;
+  text-align: center;
+  font-size: 12px;
+}
+
+.temperature-listing.violation {
+  border: 1px solid red;
   color: red;
 }

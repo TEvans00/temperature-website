@@ -40,13 +40,21 @@ const TempListing = () => {
 
   return (
     <div>
-      {temps.map((temp) => (
-        <p
-          key={temp.time}
-          className={`temperature-listing ${violations.some((violation) => violation.temp === temp.temp && violation.time === temp.time) ? 'violation' : ''}`}>
-            Temperature: {temp.temp}&#176;F Time: {`${timestampToDate(temp.time)} ${timestampToTime(temp.time)}`}
-        </p>
-      ))}
+      <h2>Temperature History</h2>
+      <div className='temp-log-grid'>
+        {temps.map((temp) => (
+          <div
+            key={temp.time}
+            className={`temperature-listing ${violations.some((violation) => violation.temp === temp.temp && violation.time === temp.time) ? 'violation' : ''}`} >
+              <p className={'temp'}>
+                {temp.temp}&#176;F
+              </p>
+          <p className={'time'}>
+            {timestampToDate(temp.time)} {timestampToTime(temp.time)}
+          </p>
+            </div>
+        ))}
+      </div>
     </div>
   );
 }

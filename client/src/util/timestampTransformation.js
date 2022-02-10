@@ -10,7 +10,7 @@ const timestampToTime = (timestamp) => {
   minutes = minutes < 10 ? `0${minutes}` : minutes;
   let seconds = date.getSeconds();
   seconds = seconds < 10 ? `0${seconds}` : seconds;
-  return `${hour}:${minutes}:${seconds} ${isPM ? 'pm' : 'am'}`;
+  return `${hour}:${minutes}:${seconds} ${isPM ? 'p.m.' : 'a.m.'}`;
 };
 
 const timestampToDate = (timestamp) => {
