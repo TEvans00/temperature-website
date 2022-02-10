@@ -1,9 +1,13 @@
+import CurrentTemp from './components/CurrentTemp';
+import TempListing from './components/TempListing';
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <p>Hello world</p>
+      <CurrentTemp />
+      <TempListing />
     </div>
   );
 }

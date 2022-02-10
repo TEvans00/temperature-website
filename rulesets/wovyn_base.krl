@@ -9,7 +9,7 @@ ruleset wovyn_base {
   }
 
   global {
-    temperature_threshold = 71
+    temperature_threshold = 74
     notification_number = "+13033324277"
   }
 
@@ -43,6 +43,6 @@ ruleset wovyn_base {
     pre {
       body = ("Warning: The temperature has reached " + event:attrs{"temperature"} + " degrees, which is above the threshold of " + temperature_threshold + " degrees.").klog("temperature warning message: ")
     }
-    if true then sdk:sendMessage(notification_number, "+16066033227", body) setting(response)
+    if false then sdk:sendMessage(notification_number, "+16066033227", body) setting(response)
   }
 }
