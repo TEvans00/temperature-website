@@ -1,4 +1,4 @@
-.App {
+body {
   padding: 50px;
 }
 
@@ -12,6 +12,11 @@ h2 {
 
 p {
   margin: 0;
+}
+
+.sensor-profile-link {
+  text-align: right;
+  padding-right: 10px;
 }
 
 .current-temp {
