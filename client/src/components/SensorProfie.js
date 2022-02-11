@@ -23,6 +23,7 @@ const SensorProfile = () => {
 
   const saveChanges = (event) => {
     event.preventDefault();
+    console.log(threshold);
     axios.post(`${config.EVENT_URL}/sensor/profile_updated`, {name, location, temperature_threshold: threshold, notification_number: notificationNumber});
     toast('Profile updated!', {type: 'success'});
   };
@@ -41,7 +42,7 @@ const SensorProfile = () => {
         <input type="text" id='location' value={location} onChange={event => setLocation(event.target.value)}></input>
         <br />
         <label htmlFor='threshold'>Temperature Threshold: </label>
-        <input type="number" id='threshold' step="0.01" value={threshold} onChange={event => setThreshold(event.target.value)}></input>
+        <input type="number" id='threshold' step={0.01} value={threshold} onChange={event => setThreshold(event.target.value)}></input>
         <br />
         <label htmlFor='number'>Notification Number: </label>
         <input type="text" id='number' value={notificationNumber} onChange={event => setNotificationNumber(event.target.value)}></input>

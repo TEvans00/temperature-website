@@ -49,7 +49,7 @@ ruleset sensor_profile {
   }
   rule update_threshold {
     select when sensor profile_updated
-      temperature_threshold re#(\d+)#
+      temperature_threshold re#(\d+[.]?\d*)#
       setting(threshold_string)
     pre {
       threshold = threshold_string.as("Number")

@@ -6,11 +6,15 @@ ruleset wovyn_base {
       with
         authToken = meta:rulesetConfig{"auth_token"}
         sessionID = meta:rulesetConfig{"session_id"}
+    use module sensor_profile
   }
 
   global {
-    temperature_threshold = 74
-    notification_number = "+13033324277"
+    getProfile = function() {
+      sensor_profile:profile
+    };
+    default_temperature_threshold = 74
+    default_notification_number = "+13033324277"
   }
 
   rule process_heartbeat {
@@ -29,20 +33,25 @@ ruleset wovyn_base {
     select when wovyn new_temperature_reading
     pre {
       temperature = event:attrs{"temperature"}.klog("temperature:")
+      profile = getProfile()
+      threshold = profile{"temperature_threshold"}.defaultsTo(default_temperature_threshold).klog("threshold:")
     }
     if true then noop()
     always {
       raise wovyn event "threshold_violation"
       attributes event:attrs
-      if (temperature > temperature_threshold).klog("above threshold:")
+      if (temperature > threshold).klog("above threshold:")
     }
   }
 
   rule threshold_notification {
     select when wovyn threshold_violation
     pre {
-      body = ("Warning: The temperature has reached " + event:attrs{"temperature"} + " degrees, which is above the threshold of " + temperature_threshold + " degrees.").klog("temperature warning message: ")
+      profile = getProfile()
+      notification_number = profile{"notification_number"}.defaultsTo(default_notification_number).klog("notification_number:")
+      threshold = profile{"temperature_threshold"}.defaultsTo(default_temperature_threshold).klog("threshold:")
+      body = ("Warning: The temperature has reached " + event:attrs{"temperature"} + " degrees, which is above the threshold of " + threshold + " degrees.").klog("temperature warning message: ")
     }
-    if false then sdk:sendMessage(notification_number, "+16066033227", body) setting(response)
+    if true then sdk:sendMessage(notification_number, "+16066033227", body) setting(response)
   }
 }

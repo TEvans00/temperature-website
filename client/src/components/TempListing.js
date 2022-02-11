@@ -14,14 +14,12 @@ const TempListing = () => {
   const getViolations = async () => {
     const violationsResponse = await axios.get(`${config.QUERY_URL}/temperature_store/threshold_violations`);
     const violations = violationsResponse.data || [];
-    console.log(violations);
     setViolations(violations);
   };
 
   const getTemperatures = async () => {
     const temperaturesResponse = await axios.get(`${config.QUERY_URL}/temperature_store/temperatures`);
     const temperatures = temperaturesResponse.data || [];
-    console.log(temperatures);
     temperatures.reverse();
     setTemps(temperatures);
   };
