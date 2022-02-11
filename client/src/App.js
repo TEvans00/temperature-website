@@ -8,7 +8,7 @@ import './styles.css';
 function App() {
   return (
     <div>
-      <p className="sensor-profile-link"><Link to="/sensor">Sensor Profile</Link></p>
+      <p className="navigation-link"><Link to="/sensor">Sensor Profile</Link></p>
       <h1>Temperature Monitor</h1>
       <CurrentTemp />
       <TempListing />

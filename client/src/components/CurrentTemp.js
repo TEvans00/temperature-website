@@ -11,7 +11,6 @@ const CurrentTemp = () => {
   const getLatestTemp = async () => {
     const temperaturesResponse = await axios.get(`${config.QUERY_URL}/temperature_store/temperatures`);
     const temperatures = temperaturesResponse.data || [];
-    console.log(temperatures);
     temperatures.reverse();
     setTemp(temperatures[0]);
   };
